@@ -2,13 +2,14 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Home from '@/pages/PageHome.vue';
 import PageThreadShow from '@/pages/PageThreadShow.vue';
+import PageNotFound from '@/pages/PageNotFound.vue';
 
 Vue.use(VueRouter);
 
 const routes = [
     {
         path: '/',
-        name: 'home',
+        name: 'Home',
         component: Home
     },
     {
@@ -16,6 +17,11 @@ const routes = [
         name: 'PageThreadShow',
         component: PageThreadShow,
         props: true
+    },
+    {
+        path: '*',
+        name: 'NotFound',
+        component: PageNotFound
     }
 ];
 
