@@ -7,7 +7,6 @@
 
 <script lang="ts">
     import { Component, Vue } from 'vue-property-decorator';
-    import _ from 'lodash';
     import ThreadList from '@/components/ThreadList.vue';
     import  sourceData from '@/data.json';
 
