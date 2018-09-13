@@ -2,15 +2,15 @@
     <div class="threads-container">
         <h1>{{thread.title}}</h1>
         <PostList :posts="posts" />
-        <PostEditor :id="id" />
+        <PostEditor @save="addPost" :threadId="id" />
     </div>
 </template>
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
+    import PostList from '@/components/PostList.vue';
+    import PostEditor from '@/components/PostEditor.vue';
     import sourceData from '@/data.json';
-    import PostList from '@/components/PostList';
-    import PostEditor from '@/components/PostEditor';
 
     @Component({
     name: 'PageThreadShow',
@@ -26,6 +26,14 @@ export default class PageThreadShow extends Vue {
         const postIds = Object.values(this.thread.posts);
         return Object.values(sourceData.posts)
             .filter(post => postIds.includes(post['.key']))
+    }
+
+    public addPost(event) {
+        const post = event.post;
+        const postId = event.post['.key'];
+        this.$set(sourceData.posts, postId, post);
+        this.$set(this.thread.posts, postId, postId);
+        this.$set(sourceData.users[post.userId], postId, postId);
     }
 }
 </script>

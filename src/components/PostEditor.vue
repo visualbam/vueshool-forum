@@ -1,6 +1,6 @@
 <template>
     <div class="post-editor">
-        <form action="" @submit.prevent="addPost">
+        <form action="" @submit.prevent="save">
             <div class="form-group">
                 <textarea
                         v-model="newPostText"
@@ -8,7 +8,8 @@
                         id=""
                         cols="30"
                         rows="10"
-                        class="form-input">
+                        class="form-input"
+                        title="">
                 </textarea>
             </div>
             <div class="form-actions">
@@ -25,27 +26,21 @@ import sourceData from '@/data.json';
     name: 'PostEditor'
 })
 export default class PostEditor extends Vue {
-    @Prop() public id;
-    public newPostText: string= '';
+    @Prop({ required: true, type: String }) public threadId;
+    public newPostText: string = '';
     public threads: any = sourceData.threads;
-    get thread() { return this.threads[this.id] }
+    get thread() { return this.threads[this.threadId] }
 
-    public addPost() {
+    public save() {
         const postId = 'greatPost' + Math.random();
         const post = {
             '.key': postId,
             text: this.newPostText,
             publishedAt: Math.round(Date.now() / 1000),
-            threadId: this.id,
-            userId: 'HJNTR1nN8tgbB148RJrPYbby8Vl1',
+            threadId: this.threadId,
+            userId: 'HJNTR1nN8tgbB148RJrPYbby8Vl1'
         };
-
-        this.$set(sourceData.posts, postId, post);
-        this.$set(this.thread.posts, postId, postId);
-        this.$set(sourceData.users[post.userId].posts, postId, postId);
-        this.newPostText = '';
-
-        this.$emit('save-post', { post })
+        this.$emit('save', { post })
     }
 }
 </script>
