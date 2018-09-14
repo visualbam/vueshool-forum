@@ -22,18 +22,17 @@ export default class PageThreadShow extends Vue {
 
     get thread() { return this.threads[this.id] }
 
-    get posts() {
-        const postIds = Object.values(this.thread.posts);
+    get posts () {
+        const postIds = Object.values(this.thread.posts)
         return Object.values(sourceData.posts)
             .filter(post => postIds.includes(post['.key']))
     }
 
-    public addPost(event) {
-        const post = event.post;
-        const postId = event.post['.key'];
-        this.$set(sourceData.posts, postId, post);
-        this.$set(this.thread.posts, postId, postId);
-        this.$set(sourceData.users[post.userId], postId, postId);
+    public addPost ({ post }) {
+        const postId = post['.key']
+        this.$set(sourceData.posts, postId, post)
+        this.$set(this.thread.posts, postId, postId)
+        this.$set(sourceData.users[post.userId].posts, postId, postId)
     }
 }
 </script>

@@ -34,12 +34,13 @@ export default class PostEditor extends Vue {
     public save() {
         const postId = 'greatPost' + Math.random();
         const post = {
-            '.key': postId,
             text: this.newPostText,
             publishedAt: Math.round(Date.now() / 1000),
             threadId: this.threadId,
-            userId: 'HJNTR1nN8tgbB148RJrPYbby8Vl1'
+            userId: 'jUjmgCurRRdzayqbRMO7aTG9X1G2',
+            '.key': postId,
         };
+        this.newPostText = '';
         this.$emit('save', { post })
     }
 }
