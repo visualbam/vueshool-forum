@@ -1,21 +1,20 @@
 <template>
     <div class="home col-full">
         <h1>Welcome to the forum</h1>
-        <ForumList :forums="forums"/>
+        <CategoryList :categories="categories"/>
     </div>
 </template>
 
 <script lang="ts">
-    import { Component, Vue } from 'vue-property-decorator';
-    import ForumList from '@/components/ForumList.vue';
-    import  sourceData from '@/data.json';
+import { Component, Vue } from 'vue-property-decorator';
+import ForumList from '@/components/ForumList.vue';
+import  sourceData from '@/data.json';
+import CategoryList from '@/components/CategoryList.vue';
 
-    @Component({
-        components: { ForumList }
-    })
-    export default class Home extends Vue {
-        public forums: any = Object.values(sourceData.forums);
-        public posts: any = sourceData.posts;
-        public users: any = sourceData.users;
-    }
+@Component({
+    components: { CategoryList, ForumList }
+})
+export default class Home extends Vue {
+    public categories: any[] = Object.values(sourceData.categories);
+}
 </script>

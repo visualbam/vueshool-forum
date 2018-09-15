@@ -4,6 +4,7 @@ import Home from '@/pages/PageHome.vue';
 import PageForum from '@/pages/PageForum.vue';
 import PageThreadShow from '@/pages/PageThreadShow.vue';
 import PageNotFound from '@/pages/PageNotFound.vue';
+import PageCategory from '@/pages/PageCategory.vue';
 
 Vue.use(VueRouter);
 
@@ -12,6 +13,12 @@ const routes = [
         path: '/',
         name: 'Home',
         component: Home
+    },
+    {
+        path: '/category/:id',
+        name: 'PageCategory',
+        component: PageCategory,
+        props: true
     },
     {
         path: '/thread/:id',
