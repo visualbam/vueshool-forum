@@ -1,6 +1,12 @@
 <template>
     <div class="threads-container">
         <h1>{{thread.title}}</h1>
+        <p>
+            By <a href="" class="link-unstyled">Robin</a>, <AppDate :timestamp="thread.publishedAt" />
+            <span class="hide-modile text-faded text-small" style="float: right; margin-top: 2px">
+                3 replies by 3 contributors
+            </span>
+        </p>
         <PostList :posts="posts" />
         <PostEditor @save="addPost" :threadId="id" />
     </div>

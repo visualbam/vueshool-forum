@@ -3,6 +3,9 @@ import App from './App.vue';
 import store from './store';
 import router from './router/router';
 
+import AppDate from './components/AppDate.vue';
+Vue.component('AppDate', AppDate);
+
 Vue.config.productionTip = false;
 
 new Vue({

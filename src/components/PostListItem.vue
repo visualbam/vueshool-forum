@@ -10,27 +10,15 @@
         <div class="post-content">
             {{post.text}}
         </div>
-        <div class="post-date text-faded" :title="post.publishedAt | formatDate">
-            <div v-if="post.edited" class="edition-info">edited</div>
-            {{post.publishedAt | timeAgo}}
-        </div>
+        <AppDate :timestamp="post.publishedAt" />
     </div>
 </template>
 <script lang="ts">
     import { Component, Prop, Vue } from 'vue-property-decorator';
     import sourceData from '@/data.json';
-    import moment from 'moment';
 
     @Component({
-        name: 'PostListItem',
-        filters: {
-            formatDate(date) {
-                return moment.unix(date).format('MMM Do YY, h:mm:ss a');
-            },
-            timeAgo(date) {
-                return moment.unix(date).fromNow();
-            }
-        }
+        name: 'PostListItem'
     })
     export default class ThreadList extends Vue {
         @Prop({ required: true, type: Object }) public post!: any;
