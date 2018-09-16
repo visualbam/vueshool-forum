@@ -15,9 +15,9 @@
             <ul>
                 <li class="navbar-user">
                     <a href="#">
-                        <img src="" alt="" class="avatar-small">
+                        <img :src="user.avatar" alt="" class="avatar-small">
                         <span>
-                            Bruce McElroy
+                            {{user.name}}
                             <img src="../assets/img/arrow-profile.svg" alt="" class="icon-profile">
                         </span>
                         <div id="user-dropdown">
@@ -40,10 +40,17 @@
 
 <script lang="ts">
     import { Component, Prop, Vue } from 'vue-property-decorator';
+    import { mapGetters } from 'vuex';
 
-    @Component({ name: 'TheNavBar' })
-    export default class TheNavBar extends Vue {
-    };
+    @Component({
+        name: 'TheNavBar',
+        computed: {
+            ...mapGetters({
+                'user': 'authUser'
+            })
+        }
+    })
+    export default class TheNavBar extends Vue { };
 </script>
 
 <style scoped>

@@ -4,15 +4,13 @@ import sourceData from '@/data.json';
 
 Vue.use(Vuex);
 
-// public addPost ({ post }) {
-//     const postId = post['.key']
-//     this.$set(this.$store.state.posts, postId, post);
-//     this.$set(this.thread.posts, postId, postId);
-//     this.$set(this.$store.state.users[post.userId].posts, postId, postId);
-// }
-
 export default new Vuex.Store({
-    state: sourceData,
+    state: { ...sourceData, authId: 'jUjmgCurRRdzayqbRMO7aTG9X1G2' },
+    getters: {
+        authUser(state) {
+            return state.users[state.authId];
+        }
+    },
     mutations: {
         setPost(state, { post, postId }) {
             Vue.set(state.posts, postId, post);
