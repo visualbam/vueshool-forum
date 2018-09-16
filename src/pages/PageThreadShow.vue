@@ -8,7 +8,7 @@
             </span>
         </p>
         <PostList :posts="posts" />
-        <PostEditor @save="addPost" :threadId="id" />
+        <PostEditor :threadId="id" />
     </div>
 </template>
 
@@ -16,7 +16,6 @@
 import { Component, Prop, Vue } from 'vue-property-decorator';
     import PostList from '@/components/PostList.vue';
     import PostEditor from '@/components/PostEditor.vue';
-
 
     @Component({
     name: 'PageThreadShow',
@@ -32,13 +31,6 @@ export default class PageThreadShow extends Vue {
         const postIds = Object.values(this.thread.posts);
         return Object.values(this.$store.state.posts)
             .filter(post => postIds.includes(post['.key']))
-    }
-
-    public addPost ({ post }) {
-        const postId = post['.key']
-        this.$set(this.$store.state.posts, postId, post);
-        this.$set(this.thread.posts, postId, postId);
-        this.$set(this.$store.state.users[post.userId].posts, postId, postId);
     }
 }
 </script>
