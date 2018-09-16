@@ -10,7 +10,6 @@
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
 import CategoryListItem from '@/components/CategoryListItem.vue';
-import sourceData from '@/data.json';
 
 @Component({
     name: 'PageCategory',
@@ -20,7 +19,7 @@ export default class PageCategory extends Vue {
     @Prop({ required: true, type: String }) public id;
 
     get category() {
-        return sourceData.categories[this.id];
+        return this.$store.state.categories[this.id];
     }
 };
 </script>

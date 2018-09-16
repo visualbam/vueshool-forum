@@ -15,24 +15,21 @@
 <script lang="ts">
     import { Component, Prop, Vue } from 'vue-property-decorator';
     import ThreadList from '@/components/ThreadList.vue';
-    import sourceData from '@/data.json';
 
     @Component({
         name: 'PageForum',
-        components: {
-            ThreadList
-        }
+        components: { ThreadList }
     })
     export default class PageForum extends Vue {
         @Prop({ required: true, type: String }) public id: string;
 
         get forum() {
-            return sourceData.forums[this.id];
+            return this.$store.state.forums[this.id];
         }
 
         get threads() {
-            return Object.values(sourceData.threads)
-                .filter(thread => thread.forumId === this.id);
+            const threads: any[] = Object.values(this.$store.state.threads);
+            return threads.filter(thread => thread.forumId === this.id);
         }
     };
 </script>

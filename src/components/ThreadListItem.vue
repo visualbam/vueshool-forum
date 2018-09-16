@@ -19,7 +19,6 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
-import sourceData from '@/data.json';
 
 @Component({
     name: 'ThreadListItem'
@@ -27,6 +26,6 @@ import sourceData from '@/data.json';
 export default class ThreadListItem extends Vue {
     @Prop({ required: true, type: Object }) public thread!: any;
     get repliesCount() { return Object.keys(this.thread.posts).length - 1 }
-    get user() { return sourceData.users[this.thread.userId] }
+    get user() { return this.$store.state.users[this.thread.userId] }
 }
 </script>

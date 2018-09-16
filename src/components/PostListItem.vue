@@ -15,7 +15,6 @@
 </template>
 <script lang="ts">
     import { Component, Prop, Vue } from 'vue-property-decorator';
-    import sourceData from '@/data.json';
 
     @Component({
         name: 'PostListItem'
@@ -24,7 +23,7 @@
         @Prop({ required: true, type: Object }) public post!: any;
 
         get user() {
-            return sourceData.users[this.post.userId];
+            return this.$store.state.users[this.post.userId];
         }
         get userPostsCount() {
             return Object.keys(this.user.posts).length;

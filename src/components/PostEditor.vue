@@ -20,7 +20,6 @@
 </template>
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
-import sourceData from '@/data.json';
 
 @Component({
     name: 'PostEditor'
@@ -28,7 +27,7 @@ import sourceData from '@/data.json';
 export default class PostEditor extends Vue {
     @Prop({ required: true, type: String }) public threadId;
     public newPostText: string = '';
-    public threads: any = sourceData.threads;
+    public threads: any = this.$store.state.threads;
     get thread() { return this.threads[this.threadId] }
 
     public save() {

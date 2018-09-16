@@ -12,7 +12,6 @@
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
 import ForumList from '@/components/ForumList.vue';
-import  sourceData from '@/data.json';
 
 interface Forum {
     '.key': string,
@@ -32,7 +31,7 @@ export default class CategoryListItem extends Vue {
     @Prop({ required: true, type: Object }) public category: any;
 
     get categoryForums() {
-        const forums: any[] = Object.values(sourceData.forums);
+        const forums: any[] = Object.values(this.$store.state.forums);
         return forums.filter(forum => forum.categoryId === this.category['.key']);
     }
 };

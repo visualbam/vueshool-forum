@@ -16,7 +16,7 @@
 import { Component, Prop, Vue } from 'vue-property-decorator';
     import PostList from '@/components/PostList.vue';
     import PostEditor from '@/components/PostEditor.vue';
-    import sourceData from '@/data.json';
+
 
     @Component({
     name: 'PageThreadShow',
@@ -24,21 +24,21 @@ import { Component, Prop, Vue } from 'vue-property-decorator';
 })
 export default class PageThreadShow extends Vue {
     @Prop({ required: true, type: String }) public id!: string;
-    public threads: any = sourceData.threads;
+    public threads: any = this.$store.state.threads;
 
     get thread() { return this.threads[this.id] }
 
     get posts () {
         const postIds = Object.values(this.thread.posts);
-        return Object.values(sourceData.posts)
+        return Object.values(this.$store.state.posts)
             .filter(post => postIds.includes(post['.key']))
     }
 
     public addPost ({ post }) {
         const postId = post['.key']
-        this.$set(sourceData.posts, postId, post)
-        this.$set(this.thread.posts, postId, postId)
-        this.$set(sourceData.users[post.userId].posts, postId, postId)
+        this.$set(this.$store.state.posts, postId, post);
+        this.$set(this.thread.posts, postId, postId);
+        this.$set(this.$store.state.users[post.userId].posts, postId, postId);
     }
 }
 </script>
