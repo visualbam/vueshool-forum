@@ -15,6 +15,7 @@
 </template>
 <script lang="ts">
     import { Component, Prop, Vue } from 'vue-property-decorator';
+    import { countObjectProperties } from '@/utils';
 
     @Component({
         name: 'PostListItem'
@@ -26,7 +27,7 @@
             return this.$store.state.users[this.post.userId];
         }
         get userPostsCount() {
-            return Object.keys(this.user.posts).length;
+            return countObjectProperties(this.user.posts);
         }
     }
 </script>

@@ -16,6 +16,7 @@
 
 <script lang="ts">
     import { Component, Prop, Vue } from 'vue-property-decorator';
+    import { countObjectProperties } from '@/utils';
 
     @Component({
         name: 'ForumListItem'
@@ -24,7 +25,7 @@
         @Prop({ required: true, type: Object }) public forum;
 
         get threadsCount() {
-            return this.forum.threads ? Object.values(this.forum.threads).length : 0;
+            return countObjectProperties(this.forum.threads);
         }
     };
 </script>

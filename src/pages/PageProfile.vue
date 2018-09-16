@@ -53,6 +53,8 @@
     import { Component, Vue } from 'vue-property-decorator';
     import { mapGetters } from 'vuex';
     import PostList from '@/components/PostList.vue'
+    import { countObjectProperties } from '@/utils';
+
 
     @Component({
         name: 'PageProfile',
@@ -65,15 +67,11 @@
         public user: any;
 
         get userThreadsCount() {
-            return this.user.threads
-                ? Object.keys(this.user.threads).length
-                : 0
+            return countObjectProperties(this.user.threads);
         }
 
         get userPostsCount() {
-            return this.user.posts
-                ? Object.keys(this.user.posts).length
-                : 0
+            return countObjectProperties(this.user.posts);
         }
 
         get userPosts() {

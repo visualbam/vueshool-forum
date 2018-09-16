@@ -19,13 +19,14 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
+import { countObjectProperties } from '@/utils';
 
 @Component({
     name: 'ThreadListItem'
 })
 export default class ThreadListItem extends Vue {
     @Prop({ required: true, type: Object }) public thread!: any;
-    get repliesCount() { return Object.keys(this.thread.posts).length - 1 }
+    get repliesCount() { return countObjectProperties(this.thread.posts) - 1 }
     get user() { return this.$store.state.users[this.thread.userId] }
 }
 </script>
