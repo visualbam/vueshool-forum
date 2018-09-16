@@ -1,6 +1,10 @@
 <template>
     <div class="category-list-item">
-        <router-link :to="{ name: 'PageCategory', params: { id: category['.key'] } }" class="list-title">{{category.name}}</router-link>
+        <router-link
+                :to="{ name: 'PageCategory', params: { id: category['.key'] } }"
+                class="list-title">
+            {{category.name}}
+        </router-link>
         <ForumList :forums="categoryForums" />
     </div>
 </template>
@@ -28,10 +32,8 @@ export default class CategoryListItem extends Vue {
     @Prop({ required: true, type: Object }) public category: any;
 
     get categoryForums() {
-        return Object.values(sourceData.forums)
-            .filter(forum => {
-                return forum.categoryId === this.category['.key'];
-            });
+        const forums: any[] = Object.values(sourceData.forums);
+        return forums.filter(forum => forum.categoryId === this.category['.key']);
     }
 };
 </script>

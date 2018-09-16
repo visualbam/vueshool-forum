@@ -3,7 +3,7 @@
         <h1>{{thread.title}}</h1>
         <p>
             By <a href="" class="link-unstyled">Robin</a>, <AppDate :timestamp="thread.publishedAt" />
-            <span class="hide-modile text-faded text-small" style="float: right; margin-top: 2px">
+            <span class="hide-module text-faded text-small" style="float: right; margin-top: 2px">
                 3 replies by 3 contributors
             </span>
         </p>
@@ -29,7 +29,7 @@ export default class PageThreadShow extends Vue {
     get thread() { return this.threads[this.id] }
 
     get posts () {
-        const postIds = Object.values(this.thread.posts)
+        const postIds = Object.values(this.thread.posts);
         return Object.values(sourceData.posts)
             .filter(post => postIds.includes(post['.key']))
     }
