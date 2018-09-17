@@ -11,7 +11,7 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
-import ForumList from '@/components/ForumList.vue';
+import ForumList from '@/components/forums/ForumList.vue';
 
 interface Forum {
     '.key': string,

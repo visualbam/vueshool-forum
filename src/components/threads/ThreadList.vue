@@ -10,7 +10,7 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
-import ThreadListItem from './ThreadListItem.vue';
+import ThreadListItem from '@/components/threads/ThreadListItem.vue';
 
 @Component({
     name: 'ThreadList',

@@ -15,7 +15,7 @@
 </template>
 <script lang="ts">
     import { Component, Prop, Vue } from 'vue-property-decorator';
-    import { countObjectProperties } from '@/utils';
+    import { countObjectProperties } from '@/utils/index';
 
     @Component({
         name: 'PostListItem'

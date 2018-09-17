@@ -6,7 +6,7 @@
 
 <script lang="ts">
     import { Component, Prop, Vue } from 'vue-property-decorator';
-    import ForumListItem from '@/components/ForumListItem.vue';
+    import ForumListItem from '@/components/forums/ForumListItem.vue';
 
     @Component({
         name: 'ForumList',

@@ -7,8 +7,8 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import ForumList from '@/components/ForumList.vue';
-import CategoryList from '@/components/CategoryList.vue';
+import ForumList from '@/components/forums/ForumList.vue';
+import CategoryList from '@/components/categories/CategoryList.vue';
 
 @Component({
     components: { CategoryList, ForumList }

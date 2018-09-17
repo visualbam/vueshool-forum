@@ -34,7 +34,6 @@ export default class PostEditor extends Vue {
         const postId = 'greatPost' + Math.random();
         const post = {
             text: this.newPostText,
-            publishedAt: Math.round(Date.now() / 1000),
             threadId: this.threadId,
             userId: 'jUjmgCurRRdzayqbRMO7aTG9X1G2',
             '.key': postId,

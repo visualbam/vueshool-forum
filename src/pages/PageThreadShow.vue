@@ -14,18 +14,17 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
-    import PostList from '@/components/PostList.vue';
-    import PostEditor from '@/components/PostEditor.vue';
+    import PostList from '@/components/posts/PostList.vue';
+    import PostEditor from '@/components/posts/PostEditor.vue';
 
-    @Component({
+@Component({
     name: 'PageThreadShow',
     components: { PostList, PostEditor }
 })
 export default class PageThreadShow extends Vue {
     @Prop({ required: true, type: String }) public id!: string;
-    public threads: any = this.$store.state.threads;
 
-    get thread() { return this.threads[this.id] }
+    get thread() { return this.$store.state.threads[this.id] }
 
     get posts () {
         const postIds = Object.values(this.thread.posts);

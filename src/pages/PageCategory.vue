@@ -9,7 +9,7 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
-import CategoryListItem from '@/components/CategoryListItem.vue';
+import CategoryListItem from '@/components/categories/CategoryListItem.vue';
 
 @Component({
     name: 'PageCategory',

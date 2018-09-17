@@ -7,7 +7,8 @@
 </template>
 <script lang="ts">
     import { Component, Prop, Vue } from 'vue-property-decorator';
-    import PostListItem from '@/components/PostListItem.vue';
+    import PostListItem from '@/components/posts/PostListItem.vue';
+
     @Component({
         name: 'PostList',
         components: {
